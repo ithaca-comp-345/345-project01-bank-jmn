@@ -6,6 +6,6 @@ UML Diagram: https://drive.google.com/file/d/1X31Jxgbfs3lRBemAtwiPOqcjQsmgOdPW/v
 
 Jason - Add userAccount, checkings account, and savings account. Implement create/delete account. Finish use-case diagram.
 
-Nusi - I will be working on freeze and unfreeze for the admin software. 
+Nusi - Add the Admin software and the central bank.
 
 Morgan- add ATM Software Class, Bank Teller Software Class and Implement the methods needed to do Transactions. 
