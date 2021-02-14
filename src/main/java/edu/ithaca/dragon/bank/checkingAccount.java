@@ -10,12 +10,21 @@ public class checkingAccount {
         return balance;
     }
 
+    public String[] getCheckingTransactions(){
+        return checkingTransactions;
+    }
+
     public void withdraw (double amount) throws InsufficientFundsException{
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be withdrawn");
         }
         else if (amount <= balance){
             balance -= amount;
+            int current = checkingTransactions.length;
+            checkingTransactions[current] = "Withdraw from checking account of the amount: " + String.valueOf(amount);
         }
         else {
             throw new InsufficientFundsException("Not enough money");
@@ -23,6 +32,9 @@ public class checkingAccount {
     }
 
     public void deposit(double amount){
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
@@ -32,6 +44,9 @@ public class checkingAccount {
     }
 
     public void transfer(double amount, BankAccount transferAccount, BankAccount otherAccount)throws InsufficientFundsException{
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }

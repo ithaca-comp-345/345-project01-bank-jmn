@@ -11,12 +11,19 @@ public class savingsAccount {
         return balance;
     }
 
+    public String[] getSavingTransactions(){
+        return savingTransactions;
+    }
+
     public double calcInterest(){
         double interest = (interestRate + 1) * balance;
         return interest;
     }
 
     public void withdraw (double amount) throws InsufficientFundsException{
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be withdrawn");
         }
@@ -29,6 +36,9 @@ public class savingsAccount {
     }
 
     public void deposit(double amount){
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
@@ -38,6 +48,9 @@ public class savingsAccount {
     }
 
     public void transfer(double amount, BankAccount transferAccount, BankAccount otherAccount)throws InsufficientFundsException{
+        if (isFrozen == true){
+            return;
+        }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }

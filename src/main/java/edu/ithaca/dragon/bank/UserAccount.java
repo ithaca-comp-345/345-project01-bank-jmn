@@ -1,18 +1,16 @@
 package edu.ithaca.dragon.bank;
+import java.util.Random;
 
 public class UserAccount {
     private int accountNumber;
     private String password;
-    private checkingAccount checkAccount;
-    private savingsAccount savAccount;
+    private checkingAccount checkAccount = null;
+    private savingsAccount savAccount = null;
 
-    public UserAccount(double startingBalance){
-        if (BankAccount.isAmountValid(startingBalance)){
-            
-        }
-        else {
-            throw new IllegalArgumentException("Starting Balance is invalid, cannot create account");
-        }
+    public UserAccount(String pin){
+        Random rand = new Random();
+        this.password = pin;
+        accountNumber = rand.nextInt(999999999 - 100000000) + 100000000;
     }
 
     public int getAccountNumber() {
@@ -20,7 +18,18 @@ public class UserAccount {
     }
 
     public void getTransactionHistory(){
-
+        if (checkAccount != null){
+            String[] cAccount = checkAccount.getCheckingTransactions();
+            for (int i = 0; i < cAccount.length; i++){
+                System.out.println(cAccount[i]);
+             }
+        }
+        if (savAccount != null){
+            String[] sAccount = savAccount.getSavingTransactions();
+            for (int i = 0; i < sAccount.length; i++){
+                System.out.println(sAccount[i]);
+             }
+        }
     }
 
     public double getTotalBalance(checkingAccount checkAccount, savingsAccount savAccount){
