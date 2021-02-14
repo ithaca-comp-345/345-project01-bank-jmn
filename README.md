@@ -8,4 +8,4 @@ Jason - Add userAccount, checkings account, and savings account. Implement getTr
 
 Nusi - Add the Admin software and the central bank. For central bank, make a hashmap with key value pairs of all of the userAccounts and their accountNumbers as key's
 
-Morgan- add ATM Software Class, Bank Teller Software Class and Implement the methods needed to do Transactions. 
+Morgan- add ATM Software Class, Bank Teller Software Class and Implement the methods needed to do Transactions (I had to do this to create userAccount, checkingaccount, and saving account so I think you should do create/delete account or something else - Jason). 
