@@ -2,7 +2,7 @@ package edu.ithaca.dragon.bank;
 
 
 public class checkingAccount {
-    private double balance;
+    public double balance;
     private boolean isFrozen;
     private String[] checkingTransactions;
 
@@ -40,25 +40,26 @@ public class checkingAccount {
         }
         else{
             balance += amount;
+            int current = checkingTransactions.length;
+            checkingTransactions[current] = "Deposit into checking account of the amount: " + String.valueOf(amount);
         }
     }
 
-    public void transfer(double amount, BankAccount transferAccount, BankAccount otherAccount)throws InsufficientFundsException{
+    public void transfer(double amount, savingsAccount sAccount)throws InsufficientFundsException{
         if (isFrozen == true){
             return;
         }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
-        else if (transferAccount == otherAccount){
-            throw new IllegalArgumentException("Cannot transfer to the same account");
-        }
-        else if (amount > transferAccount.balance){
+        else if (amount > balance){
             throw new InsufficientFundsException("Not enough money");
         }
         else{
-            transferAccount.balance -= amount;
-            otherAccount.balance += amount;
+            balance -= amount;
+            sAccount.balance += amount;
+            int current = checkingTransactions.length;
+            checkingTransactions[current] = "Transfer from checking account into saving account of the amount: " + String.valueOf(amount);
         }
     }
 }

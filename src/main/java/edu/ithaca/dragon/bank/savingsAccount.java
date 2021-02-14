@@ -1,8 +1,9 @@
 package edu.ithaca.dragon.bank;
 
 public class savingsAccount {
-    private double balance;
-    private double dailyMaxWithdraw;
+    public double balance;
+    private Double dailyMaxWithdraw = null;
+    private double todayWithdraw;
     private boolean isFrozen;
     private double interestRate;
     private String[] savingTransactions;
@@ -13,6 +14,10 @@ public class savingsAccount {
 
     public String[] getSavingTransactions(){
         return savingTransactions;
+    }
+
+    public void setDailyMaxWithdraw(double amount){
+        this.dailyMaxWithdraw = amount;
     }
 
     public double calcInterest(){
@@ -27,8 +32,16 @@ public class savingsAccount {
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be withdrawn");
         }
+        if (dailyMaxWithdraw != null){
+            todayWithdraw += amount;
+            if(todayWithdraw > dailyMaxWithdraw){
+                throw new IllegalArgumentException("Amount entered would exceed your daily withdraw limit");
+            }
+        }
         else if (amount <= balance){
             balance -= amount;
+            int current = savingTransactions.length;
+            savingTransactions[current] = "Withdraw from savings account of the amount: " + String.valueOf(amount);
         }
         else {
             throw new InsufficientFundsException("Not enough money");
@@ -44,25 +57,26 @@ public class savingsAccount {
         }
         else{
             balance += amount;
+            int current = savingTransactions.length;
+            savingTransactions[current] = "Deposit into savings account of the amount: " + String.valueOf(amount);
         }
     }
 
-    public void transfer(double amount, BankAccount transferAccount, BankAccount otherAccount)throws InsufficientFundsException{
+    public void transfer(double amount, checkingAccount cAccount)throws InsufficientFundsException{
         if (isFrozen == true){
             return;
         }
         if (BankAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
-        else if (transferAccount == otherAccount){
-            throw new IllegalArgumentException("Cannot transfer to the same account");
-        }
-        else if (amount > transferAccount.balance){
+        else if (amount > balance){
             throw new InsufficientFundsException("Not enough money");
         }
         else{
-            transferAccount.balance -= amount;
-            otherAccount.balance += amount;
+            balance -= amount;
+            cAccount.balance += amount;
+            int current = savingTransactions.length;
+            savingTransactions[current] = "Transfer from savings account into checkings account of the amount: " + String.valueOf(amount);
         }
     }
 }
