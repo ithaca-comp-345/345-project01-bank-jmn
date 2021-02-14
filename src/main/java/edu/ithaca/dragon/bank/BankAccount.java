@@ -47,4 +47,24 @@ public class BankAccount {
             return true;
         }
     }
+
+    public static boolean isAmountValid(double amount){
+        String amountStr = String.valueOf(amount);
+        if(amount < 0){
+            return false;
+        }
+        else if (amountStr.indexOf('.') == -1 ){
+            return true;
+        }
+        else{
+            String decimal = amountStr.substring(amountStr.indexOf('.') + 1);
+            if(decimal.length() > 2){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+    }
 }

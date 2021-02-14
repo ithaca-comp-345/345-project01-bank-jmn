@@ -1,17 +1,30 @@
 package edu.ithaca.dragon.bank;
 
-import java.util.ArrayList;
 public class UserAccount {
-    private ArrayList accounts;
-    private double totalBalance;
+    private int accountNumber;
     private String password;
+    private checkingAccount checkAccount;
+    private savingsAccount savAccount;
 
+    public UserAccount(double startingBalance){
+        if (BankAccount.isAmountValid(startingBalance)){
+            
+        }
+        else {
+            throw new IllegalArgumentException("Starting Balance is invalid, cannot create account");
+        }
+    }
 
-    public ArrayList getAccounts() {
-        return accounts;
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
     public void getTransactionHistory(){
 
+    }
+
+    public double getTotalBalance(checkingAccount checkAccount, savingsAccount savAccount){
+        double totalBalnce = checkAccount.getBalance() + savAccount.getBalance();
+        return totalBalnce;
     }
 }
