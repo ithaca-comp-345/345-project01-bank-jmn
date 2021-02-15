@@ -1,9 +1,10 @@
 package edu.ithaca.dragon.bank;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ATMTest {
+public class BankTellerTest {
     @Test
     void getBalanceTest() {
         //Place Holding
@@ -33,5 +34,24 @@ public class ATMTest {
         //Place Holding
         assertEquals(1, 1);
     }
+
+    @Test
+    void addAccountTest(){
+        //Place Holding
+        assertEquals(1, 1);
+    }
+
+    @Test
+    void addSavingsTest(){
+        //Place Holding
+        assertEquals(1, 1);
+    }
+
+    @Test
+    void addCheckingTest(){
+        //Place Holding
+        assertEquals(1, 1);
+    }
+    
     
 }
