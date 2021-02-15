@@ -13,8 +13,28 @@ public class UserAccount {
         accountNumber = rand.nextInt(999999999 - 100000000) + 100000000;
     }
 
+    public void openSavings(){
+        savAccount = new savingsAccount();
+    }
+
+    public void openChecking(){
+        checkAccount = new checkingAccount();
+    }
+
     public int getAccountNumber() {
         return accountNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public checkingAccount getCheckingAccount() {
+        return checkAccount;
+    }
+
+    public savingsAccount getSavingsAccount() {
+        return savAccount;
     }
 
     public void getTransactionHistory(){
