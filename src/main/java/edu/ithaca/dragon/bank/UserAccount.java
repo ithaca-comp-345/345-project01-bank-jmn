@@ -6,6 +6,7 @@ public class UserAccount {
     private String password;
     private checkingAccount checkAccount = null;
     private savingsAccount savAccount = null;
+    private boolean isFrozen = false;
 
     public UserAccount(String pin){
         Random rand = new Random();
@@ -19,6 +20,10 @@ public class UserAccount {
 
     public void openChecking(){
         checkAccount = new checkingAccount();
+    }
+
+    public boolean isFrozen(){
+        throw new RuntimeException("Not done yet!");
     }
 
     public int getAccountNumber() {
