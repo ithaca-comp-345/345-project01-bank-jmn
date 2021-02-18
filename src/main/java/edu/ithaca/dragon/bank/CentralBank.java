@@ -26,4 +26,9 @@ public class CentralBank {
         userAccounts.add(new UserAccount(password));
     }
     
+    public void freezeUnfreeze(UserAccount account){
+        account.isFrozen = true;
+        account.freezeUnfreezeAccts(account.getCheckingAccount(), account.getSavingsAccount());
+    }
+
 }

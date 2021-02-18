@@ -6,7 +6,7 @@ public class UserAccount {
     private String password;
     private checkingAccount checkAccount = null;
     private savingsAccount savAccount = null;
-    private boolean isFrozen = false;
+    public boolean isFrozen = false;
 
     public UserAccount(String pin){
         Random rand = new Random();
@@ -61,4 +61,10 @@ public class UserAccount {
         double totalBalnce = checkAccount.getBalance() + savAccount.getBalance();
         return totalBalnce;
     }
+
+    public void freezeUnfreezeAccts(checkingAccount checkAccount, savingsAccount savAccount){
+        checkAccount.isFrozen = true;
+        savAccount.isFrozen = true;
+    }
+    
 }
