@@ -79,4 +79,8 @@ public class savingsAccount {
             savingTransactions[current] = "Transfer from savings account into checkings account of the amount: " + String.valueOf(amount);
         }
     }
+
+    public void freezeUnfreeze(){
+        isFrozen = !isFrozen;
+    }
 }
