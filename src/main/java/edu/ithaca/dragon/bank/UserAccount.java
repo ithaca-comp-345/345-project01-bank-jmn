@@ -61,10 +61,4 @@ public class UserAccount {
         double totalBalnce = checkAccount.getBalance() + savAccount.getBalance();
         return totalBalnce;
     }
-
-    public void freezeUnfreezeAccts(checkingAccount checkAccount, savingsAccount savAccount){
-        checkAccount.isFrozen = true;
-        savAccount.isFrozen = true;
-    }
-    
 }
