@@ -22,15 +22,6 @@ public class UserAccount {
         checkAccount = new checkingAccount();
     }
 
-    public boolean isFrozen(){
-        if(isFrozen == false){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
     public int getAccountNumber() {
         return accountNumber;
     }
