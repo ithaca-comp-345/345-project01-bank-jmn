@@ -8,9 +8,7 @@ public class CentralBank {
     private List<UserAccount> userAccounts;
 
     public CentralBank(){
-        userAccounts = new ArrayList<UserAccount>(){
-            
-        };
+        userAccounts = new ArrayList<UserAccount>();
     }
 
     public UserAccount getUserAccount(int id){

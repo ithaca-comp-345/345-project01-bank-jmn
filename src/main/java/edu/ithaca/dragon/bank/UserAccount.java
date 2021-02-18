@@ -14,6 +14,11 @@ public class UserAccount {
         accountNumber = rand.nextInt(999999999 - 100000000) + 100000000;
     }
 
+    public UserAccount(String pin, int accountNum){
+        this.password = pin;
+        accountNumber = accountNum;
+    }
+
     public void openSavings(){
         savAccount = new savingsAccount();
     }
