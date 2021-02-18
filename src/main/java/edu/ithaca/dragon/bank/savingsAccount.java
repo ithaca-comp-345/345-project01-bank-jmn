@@ -4,7 +4,7 @@ public class savingsAccount {
     public double balance;
     private Double dailyMaxWithdraw = null;
     private double todayWithdraw;
-    private boolean isFrozen;
+    public boolean isFrozen;
     private double interestRate;
     private String[] savingTransactions;
 

@@ -3,7 +3,7 @@ package edu.ithaca.dragon.bank;
 
 public class checkingAccount {
     public double balance;
-    private boolean isFrozen;
+    public boolean isFrozen;
     private String[] checkingTransactions;
 
     public double getBalance(){
@@ -13,7 +13,7 @@ public class checkingAccount {
     public String[] getCheckingTransactions(){
         return checkingTransactions;
     }
-
+    
     public void withdraw (double amount) throws InsufficientFundsException{
         if (isFrozen == true){
             return;
