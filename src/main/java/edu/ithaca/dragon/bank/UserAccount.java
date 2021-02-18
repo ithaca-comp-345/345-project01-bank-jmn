@@ -23,7 +23,12 @@ public class UserAccount {
     }
 
     public boolean isFrozen(){
-        throw new RuntimeException("Not done yet!");
+        if(isFrozen == false){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public int getAccountNumber() {

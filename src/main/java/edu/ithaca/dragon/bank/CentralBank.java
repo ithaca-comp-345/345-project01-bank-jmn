@@ -26,4 +26,13 @@ public class CentralBank {
         userAccounts.add(new UserAccount(password));
     }
     
+    public void freezeUnFreeze(boolean wantFreeze){
+        if(wantFreeze == true){
+            //Freeze the account
+
+        }
+        else{
+            //Unfreeze the account
+        }
+    }
 }
