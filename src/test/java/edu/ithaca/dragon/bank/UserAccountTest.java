@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class UserAccountTest{
-    @Test
-    void isFreezeTest(){
-        UserAccount newUser = new UserAccount("1234");
-        assertFalse(newUser.isFrozen());
-    }
-}
+// public class UserAccountTest{
+//     //@Test
+//     // void isFreezeTest(){
+//     //     UserAccount newUser = new UserAccount("1234");
+//     //     assertFalse(newUser.isFrozen());
+//     // }
+// }
