@@ -6,6 +6,10 @@ public class checkingAccount {
     public boolean isFrozen;
     private String[] checkingTransactions;
 
+    public checkingAccount(){
+        balance = 0;
+    }
+
     public double getBalance(){
         return balance;
     }

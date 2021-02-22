@@ -4,8 +4,8 @@ import java.util.List;
 
 public class ATM {
 
-    private CentralBank centralBank;
-    private UserAccount currentUserAcc;
+    protected CentralBank centralBank;
+    protected UserAccount currentUserAcc;
 
     public ATM(CentralBank bank){
         centralBank = bank;
@@ -96,7 +96,7 @@ public class ATM {
         }
     }
 
-    public void exitATM(){
+    public void close(){
         currentUserAcc = null;
     }
 

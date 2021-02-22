@@ -8,6 +8,10 @@ public class savingsAccount {
     private double interestRate;
     private String[] savingTransactions;
 
+    public savingsAccount(){
+        balance = 0;
+    }
+
     public double getBalance(){
         return balance;
     }

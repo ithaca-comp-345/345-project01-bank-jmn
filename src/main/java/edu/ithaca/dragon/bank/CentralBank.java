@@ -23,10 +23,16 @@ public class CentralBank {
     public void addUserAccount(String password){
         userAccounts.add(new UserAccount(password));
     }
+
+    public void addUserAccount(String password, int id){
+        userAccounts.add(new UserAccount(password, id));
+    }
     
     public void freezeOrUnFreeze(int id){
         UserAccount temp = getUserAccount(id);
         temp.getCheckingAccount().freezeUnfreeze();
         temp.getSavingsAccount().freezeUnfreeze();
     }
+
+
 }

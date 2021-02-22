@@ -6,32 +6,91 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ATMTest {
     @Test
     void getBalanceTest() {
-        //Place Holding
-        assertEquals(1, 1);
+        CentralBank bank = new CentralBank();
+        BankTeller teller = new BankTeller(bank);
+        ATM atm = new ATM(bank);
+        teller.addUserAccount("2222", 10);
+        teller.addCheckingAccount();
+        teller.addSavingsAccount();
+        atm.confirmCredentials(10, "2222");
+        assertEquals(0, atm.getBalance("checking"));
+        assertEquals(0, atm.getBalance("savings"));
+        
     }
 
     @Test
     void withdrawTest() throws InsufficientFundsException{
-        //Place Holding
-        assertEquals(1, 1);
+        CentralBank bank = new CentralBank();
+        BankTeller teller = new BankTeller(bank);
+        ATM atm = new ATM(bank);
+        teller.addUserAccount("2222", 10);
+        teller.confirmCredentials(10, "2222");
+        teller.addCheckingAccount();
+        teller.addSavingsAccount();
+        atm.confirmCredentials(10, "2222");
+        atm.deposit(200, "savings");
+        assertEquals(200, atm.getBalance("savings"));
+        atm.withdraw(100, "savings");
+        assertEquals(100, atm.getBalance("savings"));
+
     }
 
     @Test
     void depositTest(){
-        //Place Holding
-        assertEquals(1, 1);
+        CentralBank bank = new CentralBank();
+        BankTeller teller = new BankTeller(bank);
+        ATM atm = new ATM(bank);
+        teller.addUserAccount("2222", 10);
+        teller.confirmCredentials(10, "2222");
+        teller.addCheckingAccount();
+        teller.addSavingsAccount();
+        atm.confirmCredentials(10, "2222");
+        atm.deposit(200, "savings");
+        assertEquals(200, atm.getBalance("savings"));
+        atm.deposit(200, "savings");
+        assertEquals(400, atm.getBalance("savings"));
+        atm.deposit(200, "checking");
+        assertEquals(200, atm.getBalance("checking"));
     }
 
     @Test
     void confirmCredentialsTest(){
-        //Place Holding
-        assertEquals(1, 1);
+        CentralBank bank = new CentralBank();
+        BankTeller teller = new BankTeller(bank);
+        ATM atm = new ATM(bank);
+        teller.addUserAccount("2222", 10);
+        assertEquals(true, atm.confirmCredentials(10, "2222"));
+        assertEquals(false, atm.confirmCredentials(10, "2022"));
+        
     }
 
     @Test
-    void transferTest(){
-        //Place Holding
-        assertEquals(1, 1);
+    void transferTest() throws InsufficientFundsException {
+        CentralBank bank = new CentralBank();
+        BankTeller teller = new BankTeller(bank);
+        ATM atm = new ATM(bank);
+        teller.addUserAccount("1111", 11);
+        teller.confirmCredentials(11, "1111");
+        teller.addCheckingAccount();
+        teller.addSavingsAccount();
+        atm.confirmCredentials(11, "1111");
+        atm.close();
+        teller.close();
+        teller.addUserAccount("2222", 10);
+        teller.confirmCredentials(10, "2222");
+        teller.addCheckingAccount();
+        teller.addSavingsAccount();
+        atm.confirmCredentials(10, "2222");
+        atm.deposit(200, "savings");
+        
+        atm.transfer(10, "checking", 100, "savings");
+        assertEquals(atm.getBalance("savings"), 100);
+
+        atm.close();
+        atm.confirmCredentials(11, "1111");
+        assertEquals(atm.getBalance("checking"), 100);
+
+
     }
     
 }

@@ -2,8 +2,6 @@ package edu.ithaca.dragon.bank;
 
 public class BankTeller extends ATM{
 
-    private CentralBank centralBank;
-    private UserAccount currentUserAcc;
 
     public BankTeller(CentralBank bank){
         super(bank);
@@ -11,6 +9,24 @@ public class BankTeller extends ATM{
 
     public void addUserAccount(String password){
         centralBank.addUserAccount(password);
+    }
+
+    public boolean confirmCredentials(int user, String pass){
+        UserAccount temp = centralBank.getUserAccount(user);
+        if (temp != null)
+        {
+            if (temp.getPassword().equals(pass)){
+                currentUserAcc = temp;
+                return true;
+            }
+        }
+        //throw error
+        currentUserAcc = null;
+        return false;
+    }
+
+    public void addUserAccount(String password, int id){
+        centralBank.addUserAccount(password, id);
     }
 
     public void addSavingsAccount(){
