@@ -33,7 +33,7 @@ public class savingsAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be withdrawn");
         }
         if (dailyMaxWithdraw != null){
@@ -56,7 +56,7 @@ public class savingsAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
         else{
@@ -70,7 +70,7 @@ public class savingsAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
         else if (amount > balance){

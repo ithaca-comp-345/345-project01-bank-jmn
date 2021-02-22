@@ -22,7 +22,7 @@ public class checkingAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be withdrawn");
         }
         else if (amount <= balance){
@@ -39,7 +39,7 @@ public class checkingAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
         else{
@@ -53,7 +53,7 @@ public class checkingAccount {
         if (isFrozen == true){
             return;
         }
-        if (BankAccount.isAmountValid(amount) == false){
+        if (UserAccount.isAmountValid(amount) == false){
             throw new IllegalArgumentException("Amount entered is not possible to be deposited");
         }
         else if (amount > balance){
