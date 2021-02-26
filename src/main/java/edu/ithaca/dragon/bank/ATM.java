@@ -75,20 +75,24 @@ public class ATM {
         if (temp != null){
             if (currentUserAcc != null){
                 if (accountTypeToWithdraw.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
-                    currentUserAcc.getSavingsAccount().withdraw(amt);
+            
                     if (accountTypeToDeposit.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
+                        currentUserAcc.getSavingsAccount().withdraw(amt);
                         currentUserAcc.getSavingsAccount().deposit(amt);
                     }
                     if (accountTypeToDeposit.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
+                        currentUserAcc.getSavingsAccount().withdraw(amt);
                         currentUserAcc.getCheckingAccount().deposit(amt);
                     }
                 }
                 if (accountTypeToWithdraw.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
-                    currentUserAcc.getCheckingAccount().withdraw(amt);
+                    
                     if (accountTypeToDeposit.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
+                        currentUserAcc.getCheckingAccount().withdraw(amt);
                         currentUserAcc.getSavingsAccount().deposit(amt);
                     }
                     if (accountTypeToDeposit.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
+                        currentUserAcc.getCheckingAccount().withdraw(amt);
                         currentUserAcc.getCheckingAccount().deposit(amt);
                     }
                 } 
