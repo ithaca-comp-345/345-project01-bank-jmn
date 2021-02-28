@@ -69,33 +69,14 @@ public class ATM {
         }
     }
 
-    public void transfer(int userToDepositTo, String accountTypeToDeposit, double amt, String accountTypeToWithdraw)
-            throws InsufficientFundsException {
-        UserAccount temp = centralBank.getUserAccount(userToDepositTo);
+    public void transfer(int userToTransfer, String accountTypeToTransfer, double amt)throws InsufficientFundsException{
+        UserAccount temp = centralBank.getUserAccount(userToTransfer);
         if (temp != null){
-            if (currentUserAcc != null){
-                if (accountTypeToWithdraw.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
-            
-                    if (accountTypeToDeposit.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
-                        currentUserAcc.getSavingsAccount().withdraw(amt);
-                        currentUserAcc.getSavingsAccount().deposit(amt);
-                    }
-                    if (accountTypeToDeposit.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
-                        currentUserAcc.getSavingsAccount().withdraw(amt);
-                        currentUserAcc.getCheckingAccount().deposit(amt);
-                    }
-                }
-                if (accountTypeToWithdraw.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
-                    
-                    if (accountTypeToDeposit.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
-                        currentUserAcc.getCheckingAccount().withdraw(amt);
-                        currentUserAcc.getSavingsAccount().deposit(amt);
-                    }
-                    if (accountTypeToDeposit.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
-                        currentUserAcc.getCheckingAccount().withdraw(amt);
-                        currentUserAcc.getCheckingAccount().deposit(amt);
-                    }
-                } 
+            if(accountTypeToTransfer.equalsIgnoreCase("checkings")){
+                temp.getCheckingAccount().transfer(amt, temp.getSavingsAccount());
+            }
+            if(accountTypeToTransfer.equalsIgnoreCase("savings")){
+                temp.getSavingsAccount().transfer(amt, temp.getCheckingAccount());
             }
         }
     }
