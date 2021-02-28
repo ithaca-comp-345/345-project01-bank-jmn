@@ -83,14 +83,12 @@ public class ATMTest {
         atm.confirmCredentials(10, "2222");
         atm.deposit(200, "savings");
         
-        atm.transfer(10, "checking", 100, "savings");
-        assertEquals(atm.getBalance("savings"), 100);
+        atm.transfer(10, "savings", 100);
+        assertEquals(100, atm.getBalance("savings"));
 
         atm.close();
         atm.confirmCredentials(11, "1111");
-        assertEquals(atm.getBalance("checking"), 100);
-
-
+        assertEquals(100, atm.getBalance("checking"));
     }
     
 }

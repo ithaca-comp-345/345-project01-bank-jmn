@@ -6,10 +6,13 @@ public class savingsAccount {
     private double todayWithdraw;
     public boolean isFrozen;
     private double interestRate;
+    private int arrayLocation = 0;
     private String[] savingTransactions;
 
     public savingsAccount(){
         balance = 0;
+        String[] sTransactions = new String[1000];
+        savingTransactions = sTransactions;
     }
 
     public double getBalance(){
@@ -44,8 +47,8 @@ public class savingsAccount {
         }
         else if (amount <= balance){
             balance -= amount;
-            int current = savingTransactions.length;
-            savingTransactions[current] = "Withdraw from savings account of the amount: " + String.valueOf(amount);
+            savingTransactions[arrayLocation] = "Withdraw from savings account of the amount: " + String.valueOf(amount);
+            arrayLocation++;
         }
         else {
             throw new InsufficientFundsException("Not enough money");
@@ -61,8 +64,8 @@ public class savingsAccount {
         }
         else{
             balance += amount;
-            int current = savingTransactions.length;
-            savingTransactions[current] = "Deposit into savings account of the amount: " + String.valueOf(amount);
+            savingTransactions[arrayLocation]= "Deposit into savings account of the amount: " + String.valueOf(amount);
+            arrayLocation++;
         }
     }
 
@@ -79,8 +82,8 @@ public class savingsAccount {
         else{
             balance -= amount;
             cAccount.balance += amount;
-            int current = savingTransactions.length;
-            savingTransactions[current] = "Transfer from savings account into checkings account of the amount: " + String.valueOf(amount);
+            savingTransactions[arrayLocation] = "Transfer from savings account into checkings account of the amount: " + String.valueOf(amount);
+            arrayLocation++;
         }
     }
 
