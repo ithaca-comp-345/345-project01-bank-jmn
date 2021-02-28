@@ -4,7 +4,7 @@ Use Case Diagram: https://drive.google.com/file/d/12xr00PDc3nbpN5pSQ1_qXusVeaE4v
 
 UML Diagram: https://drive.google.com/file/d/1X31Jxgbfs3lRBemAtwiPOqcjQsmgOdPW/view?usp=sharing
 
-Jason - Add userAccount, checkings account, and savings account. Implement getTransactionHistory. Finish use-case diagram.
+Jason - ~~Add userAccount, checkings account, and savings account. Implement getTransactionHistory. Finish use-case diagram.~~ Upload the sequence diagram. I already made and make another one that is not getBalance() or getTransactionHistory(). Fix ATM Tests by fixing transaction history property. Add comments. Denote at least one integration and System test.
 
 Nusi - Add the Admin software and the central bank. For central bank, make a hashmap with key value pairs of all of the userAccounts and their accountNumbers as key's
 
