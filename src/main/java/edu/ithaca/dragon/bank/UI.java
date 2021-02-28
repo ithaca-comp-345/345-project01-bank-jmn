@@ -152,10 +152,10 @@ public class UI {
                                 accountType = scnr.nextLine();
                             
                                 if (accountType.contains("checking")) {
-                                    atm.getBalance("checking");
+                                    System.out.println("$" + atm.getBalance("checking"));
                                 }
                                 else if (accountType.contains("savings")) {
-                                    atm.getBalance("savings");
+                                    System.out.println("$" +atm.getBalance("savings"));
                                 }
                                 else{
                                     System.out.println("Invalid account type");

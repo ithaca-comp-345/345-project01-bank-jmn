@@ -73,21 +73,11 @@ public class ATMTest {
         teller.confirmCredentials(11, "1111");
         teller.addCheckingAccount();
         teller.addSavingsAccount();
-        atm.confirmCredentials(11, "1111");
-        atm.close();
         teller.close();
-        teller.addUserAccount("2222", 10);
-        teller.confirmCredentials(10, "2222");
-        teller.addCheckingAccount();
-        teller.addSavingsAccount();
-        atm.confirmCredentials(10, "2222");
-        atm.deposit(200, "savings");
-        
-        atm.transfer(10, "savings", 100);
-        assertEquals(100, atm.getBalance("savings"));
-
-        atm.close();
         atm.confirmCredentials(11, "1111");
+        atm.deposit(200, "savings");
+        atm.transfer(11, "savings", 100);
+        assertEquals(100, atm.getBalance("savings"));
         assertEquals(100, atm.getBalance("checking"));
     }
     
