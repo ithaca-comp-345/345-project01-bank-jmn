@@ -52,4 +52,32 @@ public class UserAccountTest{
         testUser.getSavingsAccount().deposit(20);;
         assertEquals(4, testUser.getTransactionHistory()); // Equivalence Class: Multiple Transactions from both checking and savings
     }
+
+    @Test
+
+    void userAccountSystemTest(){ //This is a systems test because it is testing the ability to go through with various actions such as opening accounts, getting history, and transactions whether they be checking transactions or 
+        UserAccount testUser = new UserAccount("1111", 8); // savings transactions. Knowing if these work will tell us if whatever system we utilize this java code in will be able to utilize all of this functionnality properly
+        assertNull(testUser.getCheckingAccount()); // Equivalence Class: No checking Account yet
+        assertNull(testUser.getSavingsAccount()); // Equivalence Class: No checking Account yet
+        testUser.openChecking();
+        testUser.openSavings();
+        assertNotNull(testUser.getCheckingAccount()); // Equivalence Class: an Initialized checking account
+        assertNotNull(testUser.getSavingsAccount()); // Equivalence Class: an initialized savings account
+        assertEquals(0, testUser.getTransactionHistory()); //Equivalence Class: No transactions at all
+        testUser.getCheckingAccount().deposit(20); //tests calling functions from checking account
+        assertEquals(1, testUser.getTransactionHistory()); //Equivalence Class: A single transaction from checking
+        testUser.getCheckingAccount().deposit(5);
+        assertEquals(2, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking
+        testUser.getSavingsAccount().deposit(10); //tests calling functions from savings account
+        assertEquals(3, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking and a single transaction from savings
+        testUser.getSavingsAccount().deposit(20);;
+        assertEquals(4, testUser.getTransactionHistory()); // Equivalence Class: Multiple Transactions from both checking and savings
+        assertFalse(testUser.getCheckingAccount().isFrozen); // Equivalence Class: Checking Account Call
+        testUser.getCheckingAccount().freeze();
+        assertTrue(testUser.getCheckingAccount().isFrozen); // test the functionality of other classes calling freeze functions and it actually impacting isFrozen property
+        testUser.getSavingsAccount().freeze();
+        assertTrue(testUser.getSavingsAccount().isFrozen); // Equivalence Class: Savings Account Call
+        //If all assertions pass, shows that a system that has the classes UserAccount, checkingAccount, and savingsAccount will be able to utilize the various functions of each other
+        //while working within a single class. Everything works properly on a Macbook Pro and the assumption is this holds for all modern computers
+    }
  }
