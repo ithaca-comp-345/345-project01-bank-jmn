@@ -31,6 +31,11 @@ public class ATM {
         return false;
     }
 
+    /**
+     * 
+     * @param accountType string of the account type you want to get balance of
+     * @return double of the balance of the given account, returns 0 if the account doesnt exist or the input is wrong
+     */
     public double getBalance(String accountType){
         if (currentUserAcc != null){
             if (accountType.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
@@ -39,13 +44,17 @@ public class ATM {
             if (accountType.equalsIgnoreCase("checking") && currentUserAcc.getCheckingAccount() != null){
                 return currentUserAcc.getCheckingAccount().getBalance();
             }
-            //throw error
             return 0;
         }
-        //throw error
         return 0;
     }
 
+    /**
+     * 
+     * @param amt double to withdraw
+     * @param accountType string of the account to withdraw from
+     * @throws InsufficientFundsException is thrown if the withdraw more than they have
+     */
     public void withdraw(double amt, String accountType) throws InsufficientFundsException {
         if (currentUserAcc != null){
             if (accountType.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
@@ -58,6 +67,11 @@ public class ATM {
         
     }
 
+    /**
+     * 
+     * @param amt double to deposit
+     * @param accountType string of the account type to deposit to
+     */
     public void deposit(double amt, String accountType){
         if (currentUserAcc != null){
             if (accountType.equalsIgnoreCase("savings") && currentUserAcc.getSavingsAccount() != null){
@@ -69,6 +83,13 @@ public class ATM {
         }
     }
 
+    /**
+     * 
+     * @param userToTransfer the account to transfer in
+     * @param accountTypeToTransfer the account type to withdraw from
+     * @param amt the double to transfer
+     * @throws InsufficientFundsException
+     */
     public void transfer(int userToTransfer, String accountTypeToTransfer, double amt)throws InsufficientFundsException{
         UserAccount temp = centralBank.getUserAccount(userToTransfer);
         if (temp != null){
@@ -81,6 +102,9 @@ public class ATM {
         }
     }
 
+    /**
+     * Log out of the atm or teller
+     */
     public void close(){
         currentUserAcc = null;
     }
