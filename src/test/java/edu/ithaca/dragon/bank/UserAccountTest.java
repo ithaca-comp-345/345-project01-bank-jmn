@@ -25,6 +25,7 @@ public class UserAccountTest{
 
     void getTotalBalanceTest(){
         UserAccount testUser = new UserAccount("3333", 10);
+        assertThrows(IllegalArgumentException.class, () -> testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount()));//equivalence class of invalid arguments because the accounts must exist to calculate total balance
         testUser.openChecking();
         assertEquals(0,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Only one account is initialized
         testUser.openSavings();

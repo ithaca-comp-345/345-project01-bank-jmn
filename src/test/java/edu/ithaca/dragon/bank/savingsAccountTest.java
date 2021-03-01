@@ -118,9 +118,9 @@ public class savingsAccountTest {
         sAcc.deposit(10);
         sAcc.interestRate = .1;
         assertEquals(11, sAcc.calcInterest()); //Equivalence Class: balance and interested rate both hold values
-        sAcc.withdraw(10);
-        assertEquals(0, sAcc.calcInterest()); //Equivalence Class: balance is 0 and interest rate holds a value
+        savingsAccount sAcc2 = new savingsAccount();
+        assertEquals(0, sAcc2.calcInterest()); //Equivalence Class: balance is 0 and interest rate holds a value
         sAcc.interestRate = 0;
-        assertEquals(0, sAcc.calcInterest()); //Equivalence Class: neither balance or interest rate hold a value
+        assertEquals(0, sAcc2.calcInterest()); //Equivalence Class: neither balance or interest rate hold a value
     }
 }

@@ -59,6 +59,15 @@ public class UserAccount {
     }
 
     public double getTotalBalance(checkingAccount checkAccount, savingsAccount savAccount){
+        if(checkAccount == null && savAccount != null){
+            return savAccount.getBalance();
+        }
+        if(checkAccount != null && savAccount == null){
+            return checkAccount.getBalance();
+        }
+        if(checkAccount == null && savAccount == null){
+            throw new IllegalArgumentException("You must have an account to get the balance of");
+        }
         double totalBalnce = checkAccount.getBalance() + savAccount.getBalance();
         return totalBalnce;
     }
