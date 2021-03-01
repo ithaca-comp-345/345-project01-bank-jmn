@@ -40,8 +40,5 @@ public class BankTellerTest {
         teller.addSavingsAccount();
         assertNotEquals(null, bank.getUserAccount(10).getSavingsAccount());
     }
-
-    
-    
     
 }

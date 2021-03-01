@@ -78,19 +78,33 @@ public class UserAccount {
      * cycles through transaction history arrays, printing values at each index
      * utilzing getCheckingTransactions & getSavingsTransactions 
      */
-    public void getTransactionHistory(){
+    public int getTransactionHistory(){
+        int testCounter = 0;
+        String wNull;
+        int arrayCounter = 0;
         if (checkAccount != null){
             String[] cAccount = checkAccount.getCheckingTransactions();
-            for (int i = 0; i < cAccount.length; i++){
-                System.out.println(cAccount[i]);
-             }
+            wNull = cAccount[0]; 
+            while(wNull != null){
+                System.out.println(cAccount[arrayCounter]);
+                arrayCounter++;
+                wNull = cAccount[arrayCounter];
+                testCounter++;
+            }
         }
         if (savAccount != null){
+            arrayCounter = 0;
             String[] sAccount = savAccount.getSavingTransactions();
-            for (int i = 0; i < sAccount.length; i++){
-                System.out.println(sAccount[i]);
+            wNull = sAccount[0];
+            while(wNull!= null){
+                System.out.println(sAccount[arrayCounter]);
+                arrayCounter++;
+                wNull = sAccount[arrayCounter];
+                testCounter++;
              }
         }
+        return testCounter;
+        
     }
 
     /**
