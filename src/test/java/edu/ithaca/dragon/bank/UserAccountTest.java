@@ -35,4 +35,21 @@ public class UserAccountTest{
         testUser.getSavingsAccount().deposit(50);
         assertEquals(85,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Both Accounts have values greater than 0
     }
+
+    @Test
+
+    void getTransactionHistoryTest(){ //This is an integration test because getTransactionHistory relies on calls to the checking and savings class to get their specific transaction histories
+        UserAccount testUser = new UserAccount("3333", 10);
+        testUser.openChecking();
+        testUser.openSavings();
+        assertEquals(0, testUser.getTransactionHistory()); //Equivalence Class: No transactions at all
+        testUser.getCheckingAccount().deposit(20);
+        assertEquals(1, testUser.getTransactionHistory()); //Equivalence Class: A single transaction from checking
+        testUser.getCheckingAccount().deposit(5);
+        assertEquals(2, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking
+        testUser.getSavingsAccount().deposit(10);
+        assertEquals(3, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking and a single transaction from savings
+        testUser.getSavingsAccount().withdraw(5);
+        assertEquals(4, testUser.getTransactionHistory()); // Equivalence Class: Multiple Transactions from both checking and savings
+    }
  }
