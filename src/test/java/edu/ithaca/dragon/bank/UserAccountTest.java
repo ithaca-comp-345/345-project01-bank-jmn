@@ -20,4 +20,19 @@ public class UserAccountTest{
         assertFalse(UserAccount.isAmountValid(16.204)); //Equivalence Class: Invalid Positive Double with more than 2 decimal places
         assertFalse(UserAccount.isAmountValid(-37.675)); //Equivalence Class: Invalid Negative Double with more than 2 decimal places
     }
+
+    @Test
+
+    void getTotalBalanceTest(){
+        UserAccount testUser = new UserAccount("3333", 10);
+        assertThrows(IllegalArgumentException.class, () -> testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount()));//equivalence class of invalid arguments because the accounts must exist to calculate total balance
+        testUser.openChecking();
+        assertEquals(0,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Only one account is initialized
+        testUser.openSavings();
+        assertEquals(0,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Both accounts have just been initialized/have balances of 0
+        testUser.getCheckingAccount().deposit(35);
+        assertEquals(35,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Only One account has value greater than 0
+        testUser.getSavingsAccount().deposit(50);
+        assertEquals(85,testUser.getTotalBalance(testUser.getCheckingAccount(), testUser.getSavingsAccount())); //Equivalence Class: Both Accounts have values greater than 0
+    }
  }
