@@ -49,7 +49,7 @@ public class UserAccountTest{
         assertEquals(2, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking
         testUser.getSavingsAccount().deposit(10);
         assertEquals(3, testUser.getTransactionHistory()); //Equivalence Class: Multiple transactions from checking and a single transaction from savings
-        testUser.getSavingsAccount().withdraw(5);
+        testUser.getSavingsAccount().deposit(20);;
         assertEquals(4, testUser.getTransactionHistory()); // Equivalence Class: Multiple Transactions from both checking and savings
     }
  }
