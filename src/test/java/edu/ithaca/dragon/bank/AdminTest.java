@@ -16,8 +16,10 @@ public class AdminTest {
         BankTeller teller = new BankTeller(bank);
         teller.addUserAccount("2222", 100);
         Admin newAdmin = new Admin(bank);
-        newAdmin.freezeAccount(100);
         teller.confirmCredentials(100, "2222");
+        teller.addSavingsAccount();
+        teller.addCheckingAccount();
+        newAdmin.freezeAccount(100);
         //assertThrows(FrozenAccountException.class, ()-> teller.deposit(100.0, "savings"));
         teller.deposit(100.0, "savings");
         assertEquals(0.0, teller.getBalance("savings"));

@@ -2,21 +2,21 @@ package edu.ithaca.dragon.bank;
 
 public class Admin {
 
-    private CentralBank bank;
+    private CentralBank newbank;
     private boolean freezeAccount;
 
 	public Admin(CentralBank bank) {
         freezeAccount = false;
-        bank = new CentralBank();
+        newbank = bank;   
 	}
 
 
 	public void freezeAccount(int id){
-        bank.freezeAccount(id);
+        newbank.freezeAccount(id);
 	}
 
     public void unfreezeAccount(int id){
-        bank.unfreezeAccount(id);
+        newbank.unfreezeAccount(id);
     }
 
 
