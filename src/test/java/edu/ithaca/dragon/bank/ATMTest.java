@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ATMTest {
     @Test
     void getBalanceTest() {
+        //Get Balance Test
+        //Integration Test
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);
@@ -20,6 +22,8 @@ public class ATMTest {
 
     @Test
     void withdrawTest() throws InsufficientFundsException{
+        //Withdraw test 
+        //Integration test
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);
@@ -37,6 +41,8 @@ public class ATMTest {
 
     @Test
     void depositTest(){
+        //Deposit Test
+        //Integration
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);
@@ -55,6 +61,7 @@ public class ATMTest {
 
     @Test
     void confirmCredentialsTest(){
+        //Confirm credentials 
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);
@@ -66,6 +73,7 @@ public class ATMTest {
 
     @Test
     void transferTest() throws InsufficientFundsException {
+        //Transfer 
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);

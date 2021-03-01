@@ -7,7 +7,7 @@ public class UI {
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         ATM atm = new ATM(bank);
-        // Admin admin = new Admin(bank);
+        Admin admin = new Admin(bank);
         int id = 10000;
         String input = " ";
         while (!input.equalsIgnoreCase("quit")) {
@@ -178,17 +178,37 @@ public class UI {
                     System.out.println("Enter 'back' to go back to user select, press enter to continue: ");
                     innerInput = scnr.nextLine();
                 }
-                //TODO : Transfer?
             }
+            //Admin
             else if(input.equalsIgnoreCase("admin")){
                 String innerInput = "";
                 while (!innerInput.equalsIgnoreCase("back")) {
+                    //Chose Action
                     System.out.println("Hello Admin user");
-                    System.out.println("Enter the id number of the account you would like to freeze or unfreeze");
-                    int inputId;
-                    inputId = scnr.nextInt();
-                    scnr.nextLine();
-                    //admin.freezeOrUnfreeze(inputId);
+                    System.out.println("Enter the number of the action you would like to take");
+                    System.out.println("1. Freeze Account");
+                    System.out.println("2. Unfreeze Account");
+                    innerInput = scnr.nextLine();
+                    //Freeze Account
+                    if (innerInput.equalsIgnoreCase("1")){
+                        int inputId;
+                        System.out.println("Enter the account id");
+                        inputId = scnr.nextInt();
+                        scnr.nextLine();
+                        admin.freezeAccount(inputId);
+                    }
+                    //Unfreeze account
+                    else if (innerInput.equalsIgnoreCase("2")){
+                        int inputId;
+                        System.out.println("Enter the account id");
+                        inputId = scnr.nextInt();
+                        scnr.nextLine();
+                        admin.unfreezeAccount(inputId);
+                    }
+                    //Invalid action
+                    else{
+                        System.out.println("Invalid action input");
+                    }
 
                     System.out.println("Enter 'back' to go back to user select, press enter to continue: ");
                     innerInput = scnr.nextLine();

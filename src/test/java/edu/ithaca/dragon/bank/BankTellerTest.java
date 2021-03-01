@@ -8,6 +8,7 @@ public class BankTellerTest {
 
     @Test
     void addUserAccountTest() throws InsufficientFundsException{
+        //Checks for basic function, Integration Test
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         teller.addUserAccount("2222", 10);
@@ -19,6 +20,7 @@ public class BankTellerTest {
 
     @Test
     void addCheckingTest(){
+        //Integration Test
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         teller.addUserAccount("2222", 10);
@@ -30,6 +32,7 @@ public class BankTellerTest {
 
     @Test
     void addSavingsTest(){
+        //Integration test
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         teller.addUserAccount("2222", 10);
