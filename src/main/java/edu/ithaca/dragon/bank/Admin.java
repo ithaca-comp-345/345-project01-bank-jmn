@@ -4,27 +4,21 @@ public class Admin {
 
     private CentralBank bank;
     private boolean freezeAccount;
-    private UserAccount accountNum;
 
-	public Admin(int num) {
+	public Admin(CentralBank bank) {
         freezeAccount = false;
         bank = new CentralBank();
-        accountNum = bank.getUserAccount(num);
 	}
 
 
-	public void freezeOrUnFreezeAccount(boolean freezeOrUnFreeze){
-        if(freezeOrUnFreeze == true){
-            freezeAccount = true;
-        }
-        else{
-            freezeAccount = false;
-        }
+	public void freezeAccount(int id){
+        bank.freezeAccount(id);
 	}
 
-    public int getAccountNumber() {
-        return accountNum.getAccountNumber();
+    public void unfreezeAccount(int id){
+        bank.unfreezeAccount(id);
     }
+
 
     public boolean getFreezeAccount(){
         return freezeAccount;

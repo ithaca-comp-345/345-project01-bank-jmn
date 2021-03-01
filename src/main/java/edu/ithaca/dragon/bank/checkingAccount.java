@@ -67,7 +67,11 @@ public class checkingAccount {
         }
     }
 
-    public void freezeUnfreeze(){
-        isFrozen = !isFrozen;
+    public void freeze(){
+        isFrozen = true;
+    }
+
+    public void unfreeze(){
+        isFrozen = false;
     }
 }

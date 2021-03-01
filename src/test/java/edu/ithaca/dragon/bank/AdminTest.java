@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 
 
+
 public class AdminTest {
     
     @Test
@@ -14,10 +15,19 @@ public class AdminTest {
         CentralBank bank = new CentralBank();
         BankTeller teller = new BankTeller(bank);
         teller.addUserAccount("2222", 100);
-        Admin newAdmin = new Admin(bank.getUserAccount(100).getAccountNumber());
-        assertEquals(false, newAdmin.getFreezeAccount());
-        newAdmin.freezeOrUnFreezeAccount(true);
-        assertEquals(true, newAdmin.getFreezeAccount());
+        Admin newAdmin = new Admin(bank);
+        newAdmin.freezeAccount(100);
+        teller.confirmCredentials(100, "2222");
+        //assertThrows(FrozenAccountException.class, ()-> teller.deposit(100.0, "savings"));
+        teller.deposit(100.0, "savings");
+        assertEquals(0.0, teller.getBalance("savings"));
+        newAdmin.unfreezeAccount(100);
+        teller.deposit(100.0, "savings");
+        assertEquals(100.0, teller.getBalance("savings"));
+
+
+        
+        
     }
 
 
